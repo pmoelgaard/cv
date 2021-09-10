@@ -1,0 +1,527 @@
+// See:
+// http://blog.michaelperrin.fr/2019/11/04/printing-the-web-part-2-html-and-css-for-printing-books/
+// https://github.com/michaelperrin/blog-css-book-demo/blob/master/book.css
+// https://www.quackit.com/css/at-rules/css_bottom-center_at-rule.cfm
+
+/* VARIABLES AND IMPORTS
+*************************************************************************************************/
+$color-blue: #0074CC;
+// https://coolors.co/ffcbf2-f3c4fb-ecbcfd-e5b3fe-e2afff-deaaff-d8bbff-d0d1ff-c8e7ff-c0fdff
+$colors: #ffcbf2,
+#f3c4fb,
+#ecbcfd,
+#e5b3fe,
+#e2afff,
+#deaaff,
+#d8bbff,
+#d0d1ff,
+#c8e7ff,
+#c0fdff;
+
+
+$base-font-size: 11pt;
+$base-line-height: 17pt;
+
+$font-family-header: 'Lora';
+//$font-family-body: 'Montserrat';
+$font-family-body: 'Montserrat';
+$font-family-timeline: 'Montserrat';
+
+@import url('https://fonts.googleapis.com/css2?family=#{$font-family-header}:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=#{$font-family-body}:wght@100;200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=#{$font-family-timeline}:wght@100;200;300;400;500;600;700&display=swap');
+
+// @font-face {
+//     font-family: "feathericons";
+//     src: url('feathericons.woff') format('woff');
+// }
+
+/* MIXINS
+ *************************************************************************************************/
+@mixin phone {
+    @media screen and (max-width: 600px) {
+        @content
+    }
+}
+
+
+/* GENERAL LAYOUT
+ *************************************************************************************************/
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    //border: 1px dashed #eee;
+    font: 400 #{$base-font-size}/#{$base-line-height} #{$font-family-body};
+    width: 652px;
+    margin: auto;
+    color: #000;
+
+    @include phone {
+        width: 90%;
+        margin: 1em auto;
+    }
+}
+
+h1 {
+    margin: 0;
+    padding: 0;
+    font: 400 24pt/30pt $font-family-header;
+    color: #000;
+}
+
+h2 {
+    margin: 0 0 2mm 0;
+    padding: 0;
+    font: 500 15pt/22pt $font-family-header;
+    color: #000;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a,
+a:visited,
+a:hover {
+    color: $color-blue;
+}
+
+/* COLORS
+ *************************************************************************************************/
+.background {
+    $color-index: 1;
+
+    @each $color in $colors {
+        &.color-#{$color-index} {
+            background-color: $color;
+
+            &.muted {
+                background-color: transparentize($color, .45);
+                color: transparentize(#000, .35);
+
+                &.dead {
+                    background-color: transparentize($color, .75);
+                    color: transparentize(#000, .55);
+                }
+            }
+        }
+
+        $color-index: $color-index+1;
+    }
+}
+
+/* PRINT MEDIA PAGING
+*************************************************************************************************/
+@media print {
+    @page {
+        size: A4;
+        margin: 17mm 17mm 17mm 17mm;
+
+        @bottom-center {
+            content: "Page "counter(page) " of "counter(pages);
+        }
+    }
+
+    @page:first {
+        margin-top: 30mm
+    }
+}
+
+/* SECTIONS
+ *************************************************************************************************/
+section {
+    &.space-above {
+        margin-top: 10mm;
+    }
+
+    &.space-above-screen {
+        @media screen {
+            margin-top: 10mm;
+        }
+    }
+
+    &.personal {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        grid-template-rows: auto;
+        column-gap: 10mm;
+        row-gap: 2mm;
+        grid-template-areas:
+            "name name photo"
+            "address contacts photo"
+            "bullets bullets photo"
+        ;
+
+        @include phone {
+            grid-template-columns: auto;
+            grid-template-areas:
+                "photo"
+                "name"
+                "bullets"
+                "address"
+                "."
+                "contacts"
+            ;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        h1 {
+            grid-area: name;
+        }
+
+        .details {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+
+            &.address {
+                grid-area: address;
+            }
+
+            &.contacts {
+                grid-area: contacts;
+                text-align: left;
+
+                @include phone {
+                    text-align: left;
+                }
+            }
+
+            li {
+                line-height: 100%;
+                padding: 0 0 2.2mm 0;
+            }
+        }
+
+        .photo {
+            grid-area: photo;
+            width: 100%;
+            width: 45.5mm;
+            height: 54mm;
+            background-image: url(portrait.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            filter: grayscale(100%);
+            // border: 1px solid #666;
+            // border-radius: 0;
+            box-shadow: 3px 3px 1px 0px #333;
+
+
+            @include phone {
+                width: 100%;
+                height: 450px;
+            }
+        }
+
+        .bullets {
+            grid-area: bullets;
+            list-style-type: none;
+            margin: 2mm 0 0 0;
+            padding: 0;
+            font: 500 112%/165% $font-family-header;
+
+            @include phone {
+                margin-bottom: 1em;
+            }
+
+            >li {
+                //color: $color-blue;
+
+                &::before {
+                    content: "»";
+                    padding-right: 1.5mm;
+                }
+            }
+        }
+    }
+
+    &.profile {
+        p:not(:last-child) {
+            margin-bottom: 2mm;
+        }
+    }
+
+    &.jobs {
+        .keywords {
+            display: none;
+        }
+    }
+
+    &.tech {
+        break-before: page;
+
+        p {
+            margin-bottom: 2mm;
+        }
+
+        .scroll-x {
+            @include phone {
+                max-width: 100%;
+                overflow-x: scroll;
+            }
+
+            .timeline {
+                @include phone {
+                    width: 652px;
+                    overflow-x: scroll;
+                }
+            }
+        }
+
+        ul.notes {
+            list-style-type: none;
+            margin: 2Jcccmm 0 0 0;
+            padding: 0;
+
+            li {
+                margin: 0;
+                padding: 0;
+                font-size: 80%;
+                line-height: 140%;
+            }
+        }
+    }
+
+    &.education {
+        break-before: page;
+
+        .languages {
+            margin: 10mm 0 0 0;
+
+            em {
+                font-style: normal;
+                font-weight: 500;
+
+                @include phone {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+/* COMPONENTS
+ *************************************************************************************************/
+ul.accomplishments {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+    >li {
+        display: grid;
+        grid-template-columns: 54mm auto;
+        column-gap: 1mm;
+        row-gap: 0;
+        grid-template-areas:
+            "timespan title"
+            ". annotations"
+            ". description"
+            ". keywords";
+        margin: 0;
+        padding: 1mm;
+        break-inside: avoid;
+
+        &:nth-child(odd) {
+            background-color: #eee;
+        }
+
+        @include phone {
+            grid-template-columns: auto;
+            grid-template-areas:
+                "timespan"
+                "title"
+                "annotations"
+                "description"
+                "keywords";
+
+            padding: 1em .5em;
+            border-radius: 4px;
+        }
+
+        // >* {
+        //     border: 1px solid red;
+        // }
+
+        .timespan {
+            grid-area: timespan;
+            font-weight: 500;
+
+            @include phone {
+                padding-bottom: 1em;
+            }
+        }
+
+        .title {
+            grid-area: title;
+            font-weight: 500;
+        }
+
+        .annotations {
+            grid-area: annotations;
+            font-size: 90%;
+        }
+
+        .description {
+            grid-area: description;
+            font-size: 90%;
+
+            > .note {
+                font-style: italic;
+            }
+        }
+
+        .keywords {
+            grid-area: keywords;
+            font-size: 85%;
+            font-style: italic;
+
+        }
+    }
+}
+
+.timeline {
+    position: relative;
+
+    font-family: $font-family-timeline;
+    font-size: $base-font-size * .9;
+    line-height: $base-line-height * .9;
+
+    $timeline-row-height: $base-line-height * .9;
+    $timeline-row-gap: 2px;
+    $timeline-column-gap: 2px;
+
+    .timeline-layer {
+        display: grid;
+        grid-template-columns: [y97] 1fr [y98] 1fr [y99] 1fr [y00] 1fr [y01] 1fr [y02] 1fr [y03] 1fr [y04] 1fr [y05] 1fr [y06] 1fr [y07] 1fr [y08] 1fr [y09] 1fr [y10] 1fr [y11] 1fr [y12] 1fr [y13] 1fr [y14] 1fr [y15] 1fr [y16] 1fr [y17] 1fr [y18] 1fr [y19] 1fr [y20] 1fr [y21] 1fr;
+        grid-auto-rows: auto;
+        row-gap: $timeline-row-gap;
+        column-gap: $timeline-column-gap;
+        position: relative;
+        overflow-x: hidden;
+        z-index: 1000;
+
+        &.backdrop {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+
+            &.pre-career {
+                z-index: 100;
+                grid-template-rows: calc(100% - #{$timeline-row-height} - #{$timeline-row-gap});
+            }
+        }
+
+        >h3 {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            grid-column: 1 / -1;
+            margin: 0;
+            padding: 1pt 0 2pt 0;
+            background-color: rgba(0, 0, 0, 0);
+            color: #aaa;
+            font: 500 #{$base-font-size * .8}/#{$base-font-size * .7} #{$font-family-timeline};
+
+            // https://stackoverflow.com/a/26634224/2151692            
+            &::before {
+                content: "";
+                flex: 1;
+                border-bottom: 1px solid #dedede;
+            }
+
+            &::after {
+                content: "";
+                flex: 11;
+                border-bottom: 1px solid #dedede;
+            }
+
+            &:not(:empty)::before {
+                margin-right: 2mm;
+            }
+
+            &:not(:empty)::after {
+                margin-left: 2mm;
+            }
+
+            &:not(:first-child) {
+                //margin-top: calc(#{$timeline-row-height} + #{$timeline-row-gap})
+                padding-top: 8mm;
+            }
+        }
+
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+
+            &.separator {
+                grid-column: 1 / -1;
+                height: 2mm;
+            }
+
+            &.overflow-left {
+                justify-content: end;
+
+                // overflow to the left
+                direction: rtl;
+
+                // https://www.w3schools.com/cssref/pr_text_unicode-bidi.asp
+                unicode-bidi: plaintext;
+                padding-right: 1mm;
+            }
+
+            &.overflow-right {
+                justify-content: start;
+                padding-left: 1mm;
+            }
+
+            // &.emphasis {
+            //     font-weight: 500;
+
+            //     // &::after {
+            //     //     // https://github.com/AT-UI/feather-font/blob/master/src/css/iconfont.css
+            //     //     content: "\e879";
+            //     //     font: 100 feathericons;
+            //     //     font-weight: ;
+            //     // }
+            // }
+
+            // &.emphasis2 {
+            //     font-weight: 600;
+
+            //     // &::after {
+            //     //     // https://github.com/AT-UI/feather-font/blob/master/src/css/iconfont.css
+            //     //     content: "\e879";
+            //     //     font: 100 feathericons;
+            //     //     font-weight: ;
+            //     // }
+            // }
+        }
+
+        >time {
+            border: none;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            font-size: 90%;
+
+            &:first-of-type {
+                grid-column: 1;
+            }
+        }
+    }
+
+}
