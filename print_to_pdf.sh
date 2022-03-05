@@ -1,6 +1,6 @@
 #!/bin/sh
 
-@echo off
+#@echo off
 echo ######################################################################
 
 echo "CONVERTING:";
@@ -8,4 +8,5 @@ echo "CONVERTING:";
 echo "Target: index.html";
 echo "Destination: Peter Andreas Moelgaard CV 2021";
 
-pagedjs-cli "index.html" -o "Peter Andreas Moelgaard CV 2021.pdf";
+pagedjs-cli "index-en.html" -o "Peter Andreas Moelgaard CV 2022 - EN.pdf";
+pagedjs-cli "index-dk.html" -o "Peter Andreas Moelgaard CV 2022 - DK.pdf";
