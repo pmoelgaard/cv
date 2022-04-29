@@ -18,18 +18,30 @@ $colors: #ffcbf2,
 #c8e7ff,
 #c0fdff;
 
-
 $base-font-size: 11pt;
 $base-line-height: 17pt;
 
 $font-family-header: 'Lora';
-//$font-family-body: 'Montserrat';
 $font-family-body: 'Montserrat';
 $font-family-timeline: 'Montserrat';
 
-@import url('https://fonts.googleapis.com/css2?family=#{$font-family-header}:wght@100;200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=#{$font-family-body}:wght@100;200;300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=#{$font-family-timeline}:wght@100;200;300;400;500;600;700&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=#{$font-family-header}&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=#{$font-family-header}:wght@100;200;300;400;500;600;700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=#{$font-family-body}:wght@100;200;300;400;500;600;700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=#{$font-family-timeline}:wght@100;200;300;400;500;600;700&display=swap');
+
+ @font-face {
+     font-family: $font-family-header;
+     src: url('./fonts/Lora/Lora-VariableFont_wght.ttf');
+ }
+@font-face {
+    font-family: $font-family-body;
+    src: url('./fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
+@font-face {
+    font-family: $font-family-timeline;
+    src: url('./fonts/Montserrat/Montserrat-VariableFont_wght.ttf');
+}
 
 // @font-face {
 //     font-family: "feathericons";
@@ -129,6 +141,12 @@ a:hover {
 
     @page:first {
         margin-top: 30mm
+    }
+
+    section {
+        &.page-break-above {
+            page-break-before: always;
+        }
     }
 }
 
