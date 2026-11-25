@@ -1,0 +1,72 @@
+# Peter Andreas Moelgaard — Full Curriculum Vitae (1997–2026)
+
+Canonical URL: https://cv.pemo.me/
+Contact: hello@pemo.me | +45 40 20 28 58 | https://contact.pemo.me
+Writing Archive: https://forwardthinking.pemo.me (640 essays, 2007–2021)
+
+## Executive Profile
+Motivator, Software Architect, Full-Stack Nerd.
+- Can bring a project from concept to production
+- Can lead development and orchestrate architecture
+- Can design, build and deliver software
+
+Published Author, Conference Speaker, and Technology Community Evangelist for Adobe and Microsoft. Designed and implemented +500 systems involving APIs (SOAP/XML, REST/JSON, JWT) with security built into the system's DNA. Extensive experience across startups, scale-ups, and complex government organizations, using SCRUM, Business Process Management, and ISO certification standards.
+
+## Chronological Experience
+
+### 2021 – 2026: Principal Architect & Board Advisor (Copenhagen & Bangkok)
+Independent executive advisory, AI-native systems architecture, and board-level technology strategy across Europe and Southeast Asia.
+
+### 2019 Oct – 2021 Dec: Co-Founder & CTO at THIRD CIRCLE (Thailand, Startup)
+Designed, architected, and implemented a Peer-to-Peer Match-Making Financing Platform for Small Loans backed by unpaid invoices and non-tangible assets. Triple redundancy setup with HyperLedger Fabric across IBM, Amazon, and Microsoft Clouds.
+Tech: NodeJS, TypeScript, Ionic Framework, Angular, PostgreSQL, Redis, AWS.
+
+### 2017 Sep – 2019 Oct: Co-Founder & CTO at POWERDRIVE.IO (Thailand, Startup)
+Designed, architected, and implemented the world's first real-time General Aviation Booking Engine (Private & Business Air Charter) using TensorFlow ML and Big Data for real-time complex mission quotations. Applied through Thai Aerospace Services, Pacific Aerospace Services, and Jefferson Waterman International Sky Division.
+Tech: NodeJS, IBM Strongloop, TypeScript, HTML, CSS, Python, PostgreSQL, Redis, Sockets, Angular, AWS.
+
+### 2016 Jun – 2018 Jul: Station Manager at Thai Aerospace Services (Singapore)
+Planned, projected, and managed aviation operations for HondaJet and Gulfstream operated by TAS.
+Skills: Project Management, Organization Setup, Air Operations Oversight, Crew Management, Spareparts Inventory Management.
+
+### 2014 Apr – 2017 Sep: Lead Engineer at Singapore Technologies, Electronics & Engineering, SatCom Division (Singapore)
+Designed, architected, and served as Lead Developer on the Next Generation Management Platform for Sub-Orbital Communication Satellites for both Civilian & Military Applications.
+Tech: Web Standards, Java Enterprise, Qt+, Python, C++, IBM Strongloop, NodeJS, JavaScript/TypeScript.
+
+### 2013 Oct – 2014 Jan: Co-Founder, Software Architect at WeDoCode (Singapore, Startup)
+Assembled a team of 6 (5 developers, 1 sales consultant) and built an online edutainment platform for children in Singapore. Exited quickly after launch through acquisition.
+Tech: ASP.NET MVC, C#, JavaScript, HTML, CSS.
+
+### 2011 Sep – 2013 Oct: Chief Technology Officer (CTO) at Scope Secure (Malaysia)
+Advanced technology projects for the Malaysian Ministry of Defense and the Petrochemical Industry: security systems for military vehicles, perimeter security for oil refineries, vessel tracking and incident monitoring in the Malacca Strait.
+Tech: JavaScript, HTML, CSS, Adobe Flex, ASP.NET, C#, SQL Server.
+
+### 2009 Oct – 2011 Aug: Chief Technology Officer (CTO) at Scope Consult (Malaysia)
+Advanced technology projects for the Malaysian Ministry of Health: Iris Scanner patient identification, 80 vehicle-based rural Methadone field clinics, Counterfeit-Prevention System, and a Hospital Maternity Ward Equipment Hub.
+Tech: JavaScript, HTML, CSS, Adobe Flex, ASP.NET, C#, SQL Server.
+
+### 2004 Sep – 2009 Oct: Lead Developer & Senior Software Architect at Hello Group (Denmark)
+Simultaneously with BSc/MSc studies. Projects: Danish Ministry of Energy (MyHome intelligent home energy automation), F.L.Smidth (Cement Factory Simulator), Novo Nordisk (The Diabetes Barometer).
+Tech: JavaScript, HTML, CSS, Adobe Flex, ASP.NET, C#, SQL Server.
+
+### 2002 Aug – 2004 Sep: Co-Founder, Full Stack Developer at Bluefish (Denmark, Startup)
+Digital Agency in Copenhagen.
+Tech: JavaScript, HTML, CSS, ASP.NET, C#, SQL Server.
+
+### 1997 Jul – 2002 Sep: Freelance Developer (Denmark)
+Early web & enterprise software engineering.
+
+## Education & Certifications
+- 2006: MSc in Computer Science, Aalborg University (achieved in parallel with full-time job)
+- 2005: BSc in Computer Science, Aalborg University (achieved in parallel with full-time job)
+- 2005: Adobe Certified Expert (Adobe Flex)
+- 2005: Microsoft Certified Professional (C# / .NET, Windows development)
+- 2004: Academy Profession Degree in Computer Science, Lyngby Business Academy, Copenhagen (Honors for Diploma on .NET integration in Microsoft Office)
+- 2000: Academy Profession Degree in Multi Media Design, Northern Business Academy, Copenhagen
+- 1994: Higher Preparatory Exam, Rødovre Gymnasium, Copenhagen
+- 1992: Windsor High School, Connecticut, USA
+- 1990: Espelunden Skole, Copenhagen
+
+## Publications & Languages
+- 2011: *Flash Catalyst Unleashed* (SAMS Publishing / Addison Wesley) — https://go.pemo.me/flash-catalyst-unleased
+- Languages: Danish, English, German

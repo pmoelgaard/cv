@@ -1,0 +1,256 @@
+<div class="cv-scroll">
+  <div class="cv-container">
+    <!-- 01 · EXECUTIVE DOSSIER HEADER -->
+    <section id="overview" class="dossier-hero">
+      <div class="hero-top-bar">
+        <span class="kicker font-mono">DOSSIER // 1997–2026 // {{ profile.locations.join(' · ') }}</span>
+        <span class="dob font-mono">BORN {{ profile.born }}</span>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-identity">
+          <h1 class="hero-name font-monument">{{ profile.fullName }}</h1>
+          <p class="hero-role font-display">{{ profile.roleSummary }}</p>
+
+          <ul class="pillars-list">
+            @for (pillar of profile.pillars; track pillar) {
+              <li>
+                <span class="pillar-mark font-mono">»</span>
+                <span>{{ pillar }}</span>
+              </li>
+            }
+          </ul>
+
+          <div class="contact-strip font-mono">
+            <span>{{ profile.address.join(', ') }}</span>
+            <span class="sep">·</span>
+            <a [href]="'mailto:' + profile.email">{{ profile.email }}</a>
+            <span class="sep">·</span>
+            <a [href]="profile.phoneHref">{{ profile.phone }}</a>
+          </div>
+
+          <div class="hero-actions no-print">
+            <button type="button" class="btn btn-primary" (click)="printCv()">
+              Print / Export PDF
+            </button>
+            <a class="btn" [href]="profile.contactHubUrl" target="_blank" rel="noopener">
+              Contact Hub ↗
+            </a>
+            <a class="btn" [href]="profile.forwardThinkingUrl" target="_blank" rel="noopener">
+              Forward Thinking ↗
+            </a>
+            <a class="btn" [href]="profile.legacyPdfUrl" target="_blank" rel="noopener">
+              2022 PDF ↗
+            </a>
+          </div>
+        </div>
+
+        <figure class="portrait-frame">
+          <img
+            [src]="profile.portrait"
+            alt="Portrait of Peter Andreas Moelgaard"
+            width="220"
+            height="260"
+            loading="eager"
+          />
+          <figcaption class="font-mono">CPH · BKK</figcaption>
+        </figure>
+      </div>
+
+      <div class="metrics-bar">
+        @for (m of profile.metrics; track m.label) {
+          <div class="metric-cell">
+            <strong class="metric-val font-display">{{ m.value }}</strong>
+            <span class="metric-lbl font-mono">{{ m.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- 02 · EXECUTIVE PROFILE -->
+    <section id="profile" class="cv-section">
+      <div class="section-head">
+        <span class="sec-idx font-mono">01</span>
+        <h2 class="sec-title font-display">{{ profile.headline }}</h2>
+      </div>
+      <div class="bio-grid">
+        @for (p of profile.bioParagraphs; track p) {
+          <p class="bio-para">{{ p }}</p>
+        }
+      </div>
+    </section>
+
+    <!-- 03 · CHRONOLOGICAL EXPERIENCE -->
+    <section id="experience" class="cv-section page-break-print">
+      <div class="section-head">
+        <span class="sec-idx font-mono">02</span>
+        <h2 class="sec-title font-display">Work Experience ({{ filteredRoles().length }})</h2>
+      </div>
+
+      <div class="era-filter-bar no-print" role="tablist" aria-label="Filter career by era">
+        @for (era of eras; track era.id) {
+          <button
+            type="button"
+            role="tab"
+            class="era-pill"
+            [class.active]="prefs.selectedEra() === era.id"
+            [attr.aria-selected]="prefs.selectedEra() === era.id"
+            (click)="selectEra(era.id)"
+          >
+            <span class="font-mono">{{ era.label }}</span>
+            <small>{{ era.short }}</small>
+          </button>
+        }
+      </div>
+
+      <div class="roles-list" [class.is-compact]="prefs.compactMode()">
+        @for (role of filteredRoles(); track role.id) {
+          <article class="role-card">
+            <div class="role-meta">
+              <div class="role-time font-mono">{{ role.timespan }}</div>
+              <div class="role-loc font-mono">{{ role.location }}</div>
+              @if (role.annotation) {
+                <span class="role-badge font-mono">{{ role.annotation }}</span>
+              }
+            </div>
+            <div class="role-body">
+              <h3 class="role-title font-display">
+                {{ role.title }} <span class="role-at">at</span> <span class="role-co">{{ role.company }}</span>
+              </h3>
+              @for (line of role.description; track line) {
+                <p class="role-desc">{{ line }}</p>
+              }
+              <div class="tech-tags">
+                @for (t of role.tech; track t) {
+                  <span class="tech-tag font-mono">{{ t }}</span>
+                }
+              </div>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    <!-- 04 · TECH TIMELINE (1997–2026) -->
+    <section id="tech" class="cv-section page-break-print">
+      <div class="section-head">
+        <span class="sec-idx font-mono">03</span>
+        <h2 class="sec-title font-display">Technology Timeline (1997–2026)</h2>
+      </div>
+
+      <div class="tech-intro">
+        @for (p of profile.techIntro; track p) {
+          <p>{{ p }}</p>
+        }
+      </div>
+
+      <div class="status-filter no-print">
+        <button type="button" class="status-btn font-mono" [class.active]="techStatusFilter() === 'all'" (click)="techStatusFilter.set('all')">All</button>
+        <button type="button" class="status-btn font-mono" [class.active]="techStatusFilter() === 'active'" (click)="techStatusFilter.set('active')">Active</button>
+        <button type="button" class="status-btn font-mono" [class.active]="techStatusFilter() === 'legacy'" (click)="techStatusFilter.set('legacy')">Legacy</button>
+        <button type="button" class="status-btn font-mono" [class.active]="techStatusFilter() === 'retired'" (click)="techStatusFilter.set('retired')">Retired</button>
+      </div>
+
+      <div class="timeline-board">
+        <div class="tl-axis font-mono">
+          <span>1997</span>
+          <span>2004</span>
+          <span>2011</span>
+          <span>2018</span>
+          <span>2026</span>
+        </div>
+        @for (group of filteredTechGroups(); track group.category) {
+          <div class="tl-group">
+            <div class="tl-cat font-mono">{{ group.category }}</div>
+            <div class="tl-rows">
+              @for (item of group.items; track item.name) {
+                <div class="tl-row">
+                  <div class="tl-name font-mono">{{ item.name }}</div>
+                  <div class="tl-track">
+                    <div
+                      class="tl-bar"
+                      [class.is-active]="item.status === 'active'"
+                      [class.is-legacy]="item.status === 'legacy'"
+                      [class.is-retired]="item.status === 'retired'"
+                      [style.left.%]="barLeftPct(item.startYear)"
+                      [style.width.%]="barWidthPct(item.startYear, item.endYear)"
+                      [title]="item.name + ' (' + item.startYear + '–' + item.endYear + ')'"
+                    >
+                      <span class="font-mono">{{ item.startYear }}–{{ item.endYear }}</span>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+    <!-- 05 · SPECIALTIES, ADVISORY & MEMBERSHIPS -->
+    <section id="specialties" class="cv-section">
+      <div class="section-head">
+        <span class="sec-idx font-mono">04</span>
+        <h2 class="sec-title font-display">Specialties, Advisory &amp; Memberships</h2>
+      </div>
+
+      <div class="spec-grid">
+        @for (s of specialties; track s.title) {
+          <div class="spec-card">
+            <h3 class="font-display">{{ s.title }}</h3>
+            <p>{{ s.detail }}</p>
+          </div>
+        }
+      </div>
+
+      <div class="meta-split">
+        <div class="meta-box">
+          <div class="meta-label font-mono">Memberships &amp; Community</div>
+          <ul class="clean-list">
+            @for (m of memberships; track m) {
+              <li>{{ m }}</li>
+            }
+          </ul>
+        </div>
+        <div class="meta-box">
+          <div class="meta-label font-mono">Languages &amp; Publications</div>
+          <p class="lang-line">
+            <strong>Languages:</strong> {{ profile.languages.join(' · ') }}
+          </p>
+          @for (pub of publications; track pub.title) {
+            <div class="pub-card">
+              <span class="font-mono">{{ pub.year }}</span>
+              <a [href]="pub.url" target="_blank" rel="noopener">
+                <strong>{{ pub.title }}</strong> ↗
+              </a>
+              <small>{{ pub.publisher }}</small>
+            </div>
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 · TRAINING & EDUCATION -->
+    <section id="education" class="cv-section page-break-print">
+      <div class="section-head">
+        <span class="sec-idx font-mono">05</span>
+        <h2 class="sec-title font-display">Training, Education &amp; Certifications</h2>
+      </div>
+
+      <div class="edu-list">
+        @for (edu of education; track edu.year + edu.title) {
+          <div class="edu-row">
+            <div class="edu-year font-mono">{{ edu.year }}</div>
+            <div class="edu-main">
+              <strong class="font-display">{{ edu.title }}</strong>
+              <span class="edu-inst">{{ edu.institution }}</span>
+              @if (edu.note) {
+                <p class="edu-note font-editorial"><em>{{ edu.note }}</em></p>
+              }
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+{
+  "name": "Peter A. Moelgaard — Curriculum Vitae",
+  "short_name": "PEMO CV",
+  "description": "Executive Curriculum Vitae of Peter Andreas Moelgaard — Principal Architect, CTO, and Board Advisor (1997–2026).",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f2efe9",
+  "theme_color": "#1a4d3e",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

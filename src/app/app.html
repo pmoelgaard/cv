@@ -1,0 +1,108 @@
+<div class="cockpit-shell">
+  <!-- TOP EDGE -->
+  <header class="edge-top">
+    <a href="#overview" class="brand-cell" (click)="$event.preventDefault(); scrollToSection('overview')">
+      <app-pemo-logo variant="horizontal" />
+      <span class="brand-divider" aria-hidden="true"></span>
+      <span class="brand-text">
+        <strong class="font-display">Curriculum Vitae</strong>
+        <small class="font-editorial"><em>Peter A. Moelgaard · 1997–2026</em></small>
+      </span>
+    </a>
+
+    <nav class="nav-cell" aria-label="Dossier sections">
+      <a href="#overview" (click)="$event.preventDefault(); scrollToSection('overview')">Dossier</a>
+      <a href="#experience" (click)="$event.preventDefault(); scrollToSection('experience')">Experience</a>
+      <a href="#tech" (click)="$event.preventDefault(); scrollToSection('tech')">Tech Stack</a>
+      <a href="#education" (click)="$event.preventDefault(); scrollToSection('education')">Education</a>
+    </nav>
+
+    <div class="controls-cell">
+      <button type="button" class="print-top-btn" (click)="printCv()" title="Print or Export PDF">
+        Print / PDF
+      </button>
+      <button type="button" class="deck-btn" (click)="openDrawer('theme')">
+        <span>Studio</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- LEFT EDGE (ERA RAIL) -->
+  <aside class="edge-left" aria-label="Career era filter">
+    <button type="button" class="rail-action" (click)="selectEraAndScroll('all')" title="All Career Eras">
+      <span class="v-text">Eras</span>
+    </button>
+    <div class="year-notches">
+      @for (era of eras; track era.id) {
+        <button
+          type="button"
+          class="notch-btn font-mono"
+          [class.active]="prefs.selectedEra() === era.id"
+          (click)="selectEraAndScroll(era.id)"
+          [title]="era.label + ' · ' + era.short"
+        >
+          {{ era.id === 'all' ? 'ALL' : era.id.slice(2, 4) }}
+        </button>
+      }
+    </div>
+  </aside>
+
+  <!-- CENTER STAGE -->
+  <main class="center-stage">
+    <router-outlet></router-outlet>
+  </main>
+
+  <!-- RIGHT EDGE (STUDIO RAIL) -->
+  <aside class="edge-right" aria-label="Interactive control rail">
+    <button type="button" class="rail-action" (click)="openDrawer('theme')" title="Open Studio &amp; Preferences">
+      <span class="v-text">Studio</span>
+    </button>
+    <button type="button" class="rail-btn" (click)="printCv()" title="Print / Export PDF">
+      <span class="r-val font-mono">PDF</span>
+      <span class="r-lbl">Print</span>
+    </button>
+    <button
+      type="button"
+      class="rail-btn"
+      [class.active]="prefs.compactMode()"
+      (click)="prefs.setCompactMode(!prefs.compactMode())"
+      title="Toggle Compact View"
+    >
+      <span class="r-val font-mono">{{ prefs.compactMode() ? 'Min' : 'Full' }}</span>
+      <span class="r-lbl">View</span>
+    </button>
+  </aside>
+
+  <!-- BOTTOM EDGE -->
+  <footer class="edge-bottom">
+    <div class="bottom-left">
+      @if (prefs.showHud()) {
+        <span class="telemetry-badge">
+          <span class="rail-sq" aria-hidden="true"></span>
+          <span>Copenhagen · Bangkok</span>
+          <span class="sep">·</span>
+          <span class="font-mono">1997–2026</span>
+          <span class="sep">·</span>
+          <span class="font-mono">+500 API Systems</span>
+        </span>
+      } @else {
+        <span class="bottom-brand">Peter Andreas Moelgaard · Curriculum Vitae</span>
+      }
+    </div>
+
+    <div class="bottom-links font-mono">
+      <a [href]="profile.forwardThinkingUrl" target="_blank" rel="noopener">Forward Thinking</a>
+      <a [href]="profile.contactHubUrl" target="_blank" rel="noopener">Contact Hub</a>
+      <a href="/llms.txt" target="_blank">llms.txt</a>
+      <a href="/sitemap.xml" target="_blank">Sitemap</a>
+    </div>
+  </footer>
+</div>
+
+<app-paia-fab [hidden]="drawerOpen()" (activate)="openDrawer('paia')" />
+
+<app-preferences-drawer
+  [open]="drawerOpen()"
+  [initialSection]="drawerSection()"
+  (close)="drawerOpen.set(false)"
+></app-preferences-drawer>

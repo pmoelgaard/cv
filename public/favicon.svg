@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <style>
+    .bg { fill: #f2efe9; }
+    .frame { stroke: rgba(17, 21, 18, 0.34); }
+    .grid { stroke: rgba(17, 21, 18, 0.12); }
+    .corner { stroke: #1a4d3e; }
+    .glyph { stroke: #111512; }
+    .node { fill: #c84b31; }
+    @media (prefers-color-scheme: dark) {
+      .bg { fill: #070a0d; }
+      .frame { stroke: rgba(237, 234, 226, 0.34); }
+      .grid { stroke: rgba(237, 234, 226, 0.12); }
+      .corner { stroke: #2eb886; }
+      .glyph { stroke: #edeae2; }
+      .node { fill: #ea5b3c; }
+    }
+  </style>
+  <rect class="bg" width="120" height="120"/>
+  <rect class="frame" x="6" y="6" width="108" height="108" stroke-width="1.5"/>
+  <line class="grid" x1="60" y1="6" x2="60" y2="114" stroke-width="1"/>
+  <line class="grid" x1="6" y1="60" x2="114" y2="60" stroke-width="1"/>
+  <path class="corner" d="M2 14V2H14 M106 2H118V14 M118 106V118H106 M14 118H2V106" stroke-width="1.8"/>
+  <path class="glyph" d="M24 47V21H40L44 25V31L40 35H28" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <path class="glyph" d="M74 21H94 M74 34H89 M74 47H94 M74 21V47" stroke-width="3.6" stroke-linecap="square"/>
+  <path class="glyph" d="M21 98V72L33.5 87L46 72V98" stroke-width="3.6" stroke-linecap="square" stroke-linejoin="miter"/>
+  <circle class="glyph" cx="84" cy="85" r="13" stroke-width="3.6"/>
+  <circle class="node" cx="93.5" cy="75.5" r="3.2"/>
+</svg>

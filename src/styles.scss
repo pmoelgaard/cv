@@ -1,0 +1,387 @@
+/* ==========================================================================
+   PEMO CV — BAUHAUS × DEEP SPACE × RAW JUNGLE DESIGN SYSTEM
+   Aligned with Forward Thinking by PEMO + Executive Print Stylesheet
+   ========================================================================== */
+
+:root,
+[data-theme='light'] {
+  --bg-base: #f6f4f0;
+  --bg-surface: #fbfaf7;
+  --bg-panel: #ece8e0;
+  --bg-elevated: rgba(251, 250, 247, 0.94);
+  --bg-card: #fbfaf7;
+  --bg-subtle: rgba(28, 29, 27, 0.045);
+
+  --text-primary: #1c1d1b;
+  --text-secondary: #525550;
+  --text-muted: #7d817a;
+
+  --grid-line: rgba(28, 29, 27, 0.08);
+  --grid-strong: rgba(28, 29, 27, 0.18);
+  --radius: 6px;
+  --radius-lg: 10px;
+  --shadow-soft: 0 10px 28px -10px rgba(28, 29, 27, 0.12);
+  --shadow-popover: 0 18px 42px -12px rgba(28, 29, 27, 0.18);
+  --ambient-1: rgba(61, 99, 86, 0.05);
+  --ambient-2: rgba(59, 85, 115, 0.04);
+
+  --jungle: #3d6356;
+  --jungle-bright: #4d7a6b;
+  --terracotta: #9e6248;
+  --space: #3b5573;
+  --ochre: #9a7b3e;
+
+  --code-bg: #191c20;
+  --code-border: rgba(61, 99, 86, 0.25);
+  color-scheme: light;
+}
+
+[data-theme='jungle'] {
+  --bg-base: #edf1ed;
+  --bg-surface: #f4f7f4;
+  --bg-panel: #dfe6df;
+  --bg-elevated: rgba(244, 247, 244, 0.94);
+  --bg-card: #f4f7f4;
+  --bg-subtle: rgba(26, 36, 31, 0.05);
+
+  --text-primary: #1a241f;
+  --text-secondary: #43544b;
+  --text-muted: #6c7e74;
+
+  --grid-line: rgba(26, 36, 31, 0.09);
+  --grid-strong: rgba(26, 36, 31, 0.2);
+  --ambient-1: rgba(47, 90, 74, 0.06);
+  --ambient-2: rgba(54, 81, 110, 0.04);
+
+  --jungle: #2f5a4a;
+  --jungle-bright: #3d705d;
+  --terracotta: #965d45;
+  --space: #36516e;
+  --ochre: #8f7339;
+
+  --code-bg: #161d19;
+  --code-border: rgba(47, 90, 74, 0.28);
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --bg-base: #131518;
+  --bg-surface: #191c20;
+  --bg-panel: #21252b;
+  --bg-elevated: rgba(25, 28, 32, 0.94);
+  --bg-card: #191c20;
+  --bg-subtle: rgba(232, 230, 225, 0.045);
+
+  --text-primary: #e8e6e1;
+  --text-secondary: #a8adb5;
+  --text-muted: #767c85;
+
+  --grid-line: rgba(232, 230, 225, 0.08);
+  --grid-strong: rgba(232, 230, 225, 0.17);
+  --shadow-soft: 0 14px 34px -10px rgba(0, 0, 0, 0.55);
+  --shadow-popover: 0 22px 52px -12px rgba(0, 0, 0, 0.72);
+  --ambient-1: rgba(111, 161, 142, 0.05);
+  --ambient-2: rgba(124, 155, 194, 0.04);
+
+  --jungle: #6fa18e;
+  --jungle-bright: #82b3a0;
+  --terracotta: #c28a70;
+  --space: #7c9bc2;
+  --ochre: #c4a86b;
+
+  --code-bg: #0e1013;
+  --code-border: rgba(111, 161, 142, 0.22);
+  color-scheme: dark;
+}
+
+:root,
+[data-accent='canopy'] {
+  --accent: var(--jungle);
+  --accent-bright: var(--jungle-bright);
+  --accent-soft: color-mix(in srgb, var(--jungle) 12%, transparent);
+  --accent-contrast: #faf8f4;
+}
+
+[data-accent='vermilion'] {
+  --accent: var(--terracotta);
+  --accent-bright: var(--terracotta);
+  --accent-soft: color-mix(in srgb, var(--terracotta) 12%, transparent);
+  --accent-contrast: #faf8f4;
+}
+
+[data-accent='cobalt'] {
+  --accent: var(--space);
+  --accent-bright: var(--space);
+  --accent-soft: color-mix(in srgb, var(--space) 12%, transparent);
+  --accent-contrast: #faf8f4;
+}
+
+[data-accent='ochre'] {
+  --accent: var(--ochre);
+  --accent-bright: var(--ochre);
+  --accent-soft: color-mix(in srgb, var(--ochre) 14%, transparent);
+  --accent-contrast: #111512;
+}
+
+[data-theme='dark'][data-accent='canopy'],
+[data-theme='dark'][data-accent='vermilion'],
+[data-theme='dark'][data-accent='cobalt'] {
+  --accent-contrast: #131518;
+}
+
+[data-font-scale='sm'] {
+  --article-font-size: 0.94rem;
+  --article-line-height: 1.65;
+}
+
+[data-font-scale='md'] {
+  --article-font-size: 1rem;
+  --article-line-height: 1.72;
+}
+
+[data-font-scale='lg'] {
+  --article-font-size: 1.1rem;
+  --article-line-height: 1.8;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 65% 50% at 82% 14%, var(--ambient-1), transparent 70%),
+    radial-gradient(ellipse 55% 45% at 14% 88%, var(--ambient-2), transparent 70%);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (min-width: 900px) {
+  html,
+  body {
+    height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  * {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  *::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+}
+
+@media (max-width: 899px) {
+  html,
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: 'Space Grotesk', sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.font-monument {
+  font-family: 'Syne', 'Space Grotesk', sans-serif;
+  letter-spacing: -0.03em;
+}
+
+.font-editorial {
+  font-family: 'Newsreader', Georgia, serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.18s ease, background-color 0.18s ease;
+}
+
+a:hover {
+  color: var(--accent-bright);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.15rem;
+  border-radius: var(--radius);
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  border: 1px solid var(--grid-strong);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--text-primary);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-color: var(--accent);
+}
+
+.btn-primary:hover {
+  background: var(--jungle-bright);
+  border-color: var(--jungle-bright);
+  color: #faf8f4;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Motion Tokens */
+:root {
+  --motion-fast: 150ms;
+  --motion-mid: 200ms;
+  --ease-arch: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-motion='subtle'] {
+  --motion-fast: 100ms;
+  --motion-mid: 130ms;
+}
+
+[data-motion='reduced'] *,
+[data-motion='reduced'] *::before,
+[data-motion='reduced'] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ==========================================================================
+   PRINT / PDF EXPORT — Executive A4 Dossier
+   ========================================================================== */
+@media print {
+  @page {
+    size: A4;
+    margin: 14mm 15mm 16mm 15mm;
+  }
+
+  html,
+  body {
+    height: auto !important;
+    width: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111512 !important;
+    font-size: 9.5pt !important;
+    line-height: 1.45 !important;
+  }
+
+  .edge-top,
+  .edge-left,
+  .edge-right,
+  .edge-bottom,
+  app-paia-fab,
+  app-preferences-drawer,
+  .no-print {
+    display: none !important;
+  }
+
+  .cockpit-shell,
+  .center-stage,
+  .cv-scroll {
+    display: block !important;
+    height: auto !important;
+    width: 100% !important;
+    overflow: visible !important;
+    position: static !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .cv-container {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .dossier-hero {
+    border: 1px solid #d0cbc2 !important;
+    background: #ffffff !important;
+    padding: 12pt !important;
+    margin-bottom: 14pt !important;
+    break-inside: avoid;
+  }
+
+  .portrait-frame img {
+    filter: grayscale(100%);
+  }
+
+  .role-card,
+  .edu-row,
+  .spec-card,
+  .pub-card {
+    border-color: #d8d4cc !important;
+    background: #ffffff !important;
+    break-inside: avoid;
+    box-shadow: none !important;
+  }
+
+  .cv-section {
+    margin-top: 14pt !important;
+  }
+
+  .page-break-print {
+    break-before: page;
+  }
+
+  a {
+    color: #111512 !important;
+    text-decoration: none !important;
+  }
+}

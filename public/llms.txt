@@ -1,0 +1,21 @@
+# Peter Andreas Moelgaard — Curriculum Vitae
+
+> Executive Curriculum Vitae & Career Dossier of Peter Andreas Moelgaard (1997–2026). Canonical Domain: https://cv.pemo.me. Principal Architect, CTO, Founder, and Board Advisor operating between Copenhagen and Bangkok.
+
+## Core Endpoints
+- [Executive CV Dossier](https://cv.pemo.me/)
+- [Legacy PDF Archive (2022)](https://cv.pemo.me/Peter-Andreas-Moelgaard-CV-2022.pdf)
+- [Full Career Index for LLMs](https://cv.pemo.me/llms-full.txt)
+- [XML Sitemap](https://cv.pemo.me/sitemap.xml)
+
+## Ecosystem Cross-Links
+- [Forward Thinking (640 Engineering Essays, 2007–2021)](https://forwardthinking.pemo.me/)
+- [Contact Hub (9 Direct Channels & vCard)](https://contact.pemo.me/)
+
+## Summary Profile
+- **Name**: Peter Andreas Moelgaard (born November 22, 1974)
+- **Bases**: Copenhagen, Denmark & Bangkok, Thailand
+- **Track Record**: 29 years (1997–2026), +500 systems involving APIs designed and implemented
+- **Education**: MSc in Computer Science (2006) & BSc in Computer Science (2005), Aalborg University
+- **Publication**: *Flash Catalyst Unleashed* (SAMS Publishing / Addison Wesley, 2011)
+- **Languages**: Danish, English, German
